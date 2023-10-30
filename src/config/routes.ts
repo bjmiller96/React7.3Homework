@@ -1,5 +1,6 @@
 import Home from "../pages/Home";
 import About from "../pages/About";
+import Contact from "../pages/Contact";
 import Dashboard from "../pages/Dashboard";
 
 interface RouteType {
@@ -12,12 +13,17 @@ const routes: RouteType[] = [
     {
         path: "",
         component: Home,
-        name: "Home Screen",
+        name: "Home",
     },
     {
         path: "/about",
         component: About,
         name: "About",
+    },
+    {
+        path: "/contact",
+        component: Contact,
+        name: "Contact",
     },
     {
         path: "/dashboard",

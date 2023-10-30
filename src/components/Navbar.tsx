@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import {useState} from "react"
+import {Link} from "react-router-dom"
 import Button from './Button'
 
 const Navbar = () => {
@@ -31,6 +31,9 @@ const Navbar = () => {
                         </Link>
                         <Link to='/about' onClick={clicked}>
                             <Button className="transition duration-200 p-2 m-2 bg-white justify- text-red-800 rounded border-white hover:text-white hover:bg-gray-400">About</Button>
+                        </Link>
+                        <Link to='/contact' onClick={clicked}>
+                            <Button className="transition duration-200 p-2 m-2 bg-white justify- text-red-800 rounded border-white hover:text-white hover:bg-gray-400">Contact</Button>
                         </Link>
                         <Link to='/dashboard' onClick={clicked}>
                             <Button className="transition duration-200 p-2 m-2 bg-white justify- text-red-800 rounded border-white hover:text-white hover:bg-gray-400">Dashboard</Button>

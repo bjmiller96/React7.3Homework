@@ -1,4 +1,4 @@
-// import React from "react"
+import React from "react"
 import CarForm from "./CarForm"
 
 type Props = {
@@ -7,18 +7,16 @@ type Props = {
 }
 
 const Modal = (props: Props) => {
-    if(!props.open) {
-        return(<></>)
-    }
+    if(!props.open) return(<></>)
 
-    return(
-        <div className="fixed w-full h-full flex overflow-auto z-1 justify-center align-middle bg-gray-400 bg-opacity-25" onClick={props.onClose}>
-            <div className="max-w-600px w-2/5 fixed flex z-1 mt-20 bg-white shadow-xl rounded" onClick={(e) => {e.stopPropagation()}}>
+    return (
+        <div className="w-full h-full top-0 left-0 fixed flex overflow-auto z-1 justify-center items-center align-middle bg-black bg-opacity-50" onClick={props.onClose}>
+            <div className="max-w-600px w-2/5 fixed flex z-1 mt-20 bg-white rounded" onClick={(e) => {e.stopPropagation()}}>
                 <div className="w-full flex flex-col">
-                    <div className="flex flex-row space-apart">
-                        <p className="flex justify-start m-3 bg-gray-400 p-2 rounded hover:bg-gray-800 text-white" onClick={props.onClose}>X</p>
+                    <div className="flex flex-row justify-end">
+                        <p className="flex justify-start transition duration-200 m-3 bg-red-800 text-white p-2 rounded hover:bg-gray-400 hover:text-red-800" onClick={props.onClose}>X</p>
                     </div>
-                    <div className="flex flex-col items-center text-center mt-3 p-2">
+                    <div className="flex flex-col items-center text-red-800 text-center mt-3 p-2">
                         <CarForm />
                     </div>
                 </div>
