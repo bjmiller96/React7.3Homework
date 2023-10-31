@@ -13,22 +13,22 @@ const routes: RouteType[] = [
     {
         path: "",
         component: Home,
-        name: "Home",
+        name: "Home"
     },
     {
         path: "/about",
         component: About,
-        name: "About",
+        name: "About"
     },
     {
         path: "/contact",
         component: Contact,
-        name: "Contact",
+        name: "Contact"
     },
     {
         path: "/dashboard",
         component: Dashboard,
-        name: "Dashboard",
+        name: "Dashboard"
     }
 ];
 

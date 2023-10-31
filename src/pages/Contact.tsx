@@ -1,4 +1,3 @@
-// import React from 'react'
 import Background from '../assets/images/underground-garage.jpg'
 
 const Contact = () => {

@@ -1,4 +1,3 @@
-// import React from 'react'
 import Background from '../assets/images/parking-garage.jpg'
 import DataTable from '../components/DataTable'
 

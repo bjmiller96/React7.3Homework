@@ -1,13 +1,14 @@
-import React from "react"
+// import React from "react"
 import CarForm from "./CarForm"
 
 type Props = {
+    id?: string[];
     open: boolean;
     onClose: () => void;
 }
 
 const Modal = (props: Props) => {
-    if(!props.open) return(<></>)
+    if(!props.open) return(<></>);
 
     return (
         <div className="w-full h-full top-0 left-0 fixed flex overflow-auto z-1 justify-center items-center align-middle bg-black bg-opacity-50" onClick={props.onClose}>
@@ -17,7 +18,7 @@ const Modal = (props: Props) => {
                         <p className="flex justify-start transition duration-200 m-3 bg-red-800 text-white p-2 rounded hover:bg-gray-400 hover:text-red-800" onClick={props.onClose}>X</p>
                     </div>
                     <div className="flex flex-col items-center text-red-800 text-center mt-3 p-2">
-                        <CarForm />
+                        <CarForm id={props.id} onClose={props.onClose}/>
                     </div>
                 </div>
             </div>

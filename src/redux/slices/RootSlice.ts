@@ -6,7 +6,7 @@ const rootSlice = createSlice({
         year: "Year",
         make: "Make",
         model: "Model",
-        cost: "Cost"
+        cost: "Cost",
     },
     reducers: {
         chooseYear: (state, action) => {state.year = action.payload},

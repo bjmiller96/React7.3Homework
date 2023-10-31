@@ -1,33 +1,40 @@
-import {useSubmit} from 'react-router-dom'
+// import {useSubmit} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import Button from './Button'
 import Input from './Input'
-
+import {server_calls} from '../api/server'
 import {useDispatch, useStore} from 'react-redux'
 import {chooseYear, chooseMake, chooseModel, chooseCost} from '../redux/slices/RootSlice'
+
 interface CarFormProps {
-    id?: string[]
+    id?: string[];
+    onClose: () => void;
 }
 
 const CarForm = (props:CarFormProps) => {
     const {register, handleSubmit} = useForm({})
-    const dispatch = useDispatch()
-    const store = useStore()
+    const dispatch = useDispatch();
+    const store = useStore();
 
     const onSubmit = (data: any, event: any) => {
         console.log(`ID: ${typeof props.id}`)
         console.log(props.id)
         console.log(data)
-        if(props.id && props.id.length > 0) {
 
+        if(props.id && props.id.length > 0) {
+            server_calls.update(props.id[0], data)
             console.log(`Updated: ${data.make} ${props.id}`)
         } else {
-            dispatch(chooseYear(data.year))
-            dispatch(chooseMake(data.make))
-            dispatch(chooseModel(data.model))
-            dispatch(chooseCost(data.cost))
+            dispatch(chooseYear(data.year));
+            dispatch(chooseMake(data.make));
+            dispatch(chooseModel(data.model));
+            dispatch(chooseCost(data.cost));
 
+            server_calls.create(store.getState());
+            setTimeout(() => {window.location.reload()}, 1000);
+            event.target.reset()
 
+            props.onClose();
         }
     }
 

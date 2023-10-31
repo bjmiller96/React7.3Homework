@@ -1,17 +1,27 @@
 import {useState} from "react"
 import {Link} from "react-router-dom"
 import Button from './Button'
+import {useAuth0} from '@auth0/auth0-react'
 
 const Navbar = () => {
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(false);
+    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+
+    const signOutOnClick = () => {
+        logout();
+    };
+
+    const signInOnClick = () => {
+        loginWithRedirect();
+    };
 
     const dropDown = () => { 
-        setIsVisible(!isVisible)
-    }
+        setIsVisible(!isVisible);
+    };
 
     const clicked = () => {
-        setIsVisible(false)
-    }
+        setIsVisible(false);
+    };
 
     return (
         <nav className="flex items-center justify-between flex-wrap bg-red-800 p-4">
@@ -38,13 +48,23 @@ const Navbar = () => {
                         <Link to='/dashboard' onClick={clicked}>
                             <Button className="transition duration-200 p-2 m-2 bg-white justify- text-red-800 rounded border-white hover:text-white hover:bg-gray-400">Dashboard</Button>
                         </Link>
+                        { 
+                            !isAuthenticated ?
+                            <Link to='/' onClick={signInOnClick}>
+                                <Button className="transition duration-200 p-2 m-2 bg-white justify- text-red-800 rounded border-white hover:text-white hover:bg-gray-400">Sign In</Button>
+                            </Link>
+                            :
+                            <Link to='/' onClick={signOutOnClick}>
+                                <Button className="transition duration-200 p-2 m-2 bg-white justify- text-red-800 rounded border-white hover:text-white hover:bg-gray-400">Sign Out</Button>
+                            </Link>
+                        }
                     </div>
                 </div>
             ) : (
                 <></>
-            ) }
+            )}
         </nav>
-    )     
+    );     
 }
 
-export default Navbar   
+export default Navbar
