@@ -12,7 +12,7 @@ const AuthChecker = ({children}: Props) => {
 
     useEffect(() => {
         if(!isLoading && !isAuthenticated) {
-            loginWithRedirect();
+            loginWithRedirect({appState: {returnTo: window.location.pathname}});
         }
     }, [isLoading, isAuthenticated, loginWithRedirect]);
 
@@ -24,7 +24,7 @@ const AuthChecker = ({children}: Props) => {
 
     return (
         <>{children}</>
-    );
-};
+    )
+}
 
 export default AuthChecker

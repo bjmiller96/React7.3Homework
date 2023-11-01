@@ -24,6 +24,8 @@ const CarForm = (props:CarFormProps) => {
         if(props.id && props.id.length > 0) {
             server_calls.update(props.id[0], data)
             console.log(`Updated: ${data.make} ${props.id}`)
+            setTimeout(() => {window.location.reload()}, 500);
+            event.target.reset()
         } else {
             dispatch(chooseYear(data.year));
             dispatch(chooseMake(data.make));
@@ -31,10 +33,9 @@ const CarForm = (props:CarFormProps) => {
             dispatch(chooseCost(data.cost));
 
             server_calls.create(store.getState());
-            setTimeout(() => {window.location.reload()}, 1000);
+            setTimeout(() => {window.location.reload()}, 500);
             event.target.reset()
-
-            props.onClose();
+            props.onClose()
         }
     }
 

@@ -6,7 +6,8 @@ import Dashboard from "../pages/Dashboard";
 interface RouteType {
     path: string,
     component: ()  => JSX.Element,
-    name: string
+    name: string,
+    protected?: boolean
 }
 
 const routes: RouteType[] = [
@@ -28,7 +29,8 @@ const routes: RouteType[] = [
     {
         path: "/dashboard",
         component: Dashboard,
-        name: "Dashboard"
+        name: "Dashboard",
+        protected: true
     }
 ];
 
